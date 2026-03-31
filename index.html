@@ -1,14 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sample launch</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bestie 💜</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, black, purple);
+    color: white;
+    text-align: center;
+}
+
+/* Container for proper spacing */
+.container {
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Heading */
+h1 {
+    font-size: 28px;
+    text-shadow: 0 0 10px violet;
+}
+
+/* Image responsive */
+img {
+    width: 70%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid violet;
+    margin-top: 15px;
+    box-shadow: 0 0 15px violet;
+}
+
+/* Cake */
+.cake {
+    position: relative;
+    margin: 30px auto;
+    width: 150px;
+}
+
+/* Layers */
+.layer {
+    height: 30px;
+    background: purple;
+    margin: 4px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 8px violet;
+}
+
+/* Candle */
+.candle {
+    width: 8px;
+    height: 30px;
+    background: white;
+    margin: auto;
+    position: relative;
+}
+
+/* Flame */
+.flame {
+    width: 12px;
+    height: 16px;
+    background: orange;
+    border-radius: 50%;
+    position: absolute;
+    top: -16px;
+    left: -2px;
+    animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.2); opacity: 0.7; }
+}
+
+/* Button */
+button {
+    width: 80%;
+    max-width: 250px;
+    padding: 12px;
+    font-size: 16px;
+    background: violet;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: black;
+    margin-top: 15px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Message */
+#msg {
+    margin-top: 15px;
+    font-size: 18px;
+    color: violet;
+}
+
+/* Small screen adjustments */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #msg {
+        font-size: 16px;
+    }
+}
+</style>
+
 </head>
+
 <body>
-    <h1> this is a sample launch page </h1>
-    <h2>this is a picture of earth</h2>
-    <h3> hello lekha apshara:)</h3>
-    <img src="https://images.pexels.com/photos/2422/sky-earth-galaxy-universe.jpg?cs=srgb&dl=astronomy-discovery-earth-2422.jpg&fm=jpg" alt="Earth from space" width="600">
+
+<div class="container">
+
+<h1>🎉 Happy Birthday Bestie 💜</h1>
+
+<!-- Replace with your bestie image -->
+<img src="BDAY.jpeg" alt="Bestie Photo">
+
+<!-- Cake -->
+<div class="cake">
+    <div class="candle">
+        <div class="flame" id="flame"></div>
+    </div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+</div>
+
+<button onclick="blowCandle()">Blow Candle 🎂</button>
+
+<p id="msg"></p>
+<P id="wish"></P>
+
+</div>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<script>
+function blowCandle() {
+    document.getElementById("flame").style.display = "none";
+
+    document.getElementById("msg").innerHTML =
+        "💜MANY MORE HAPPY RETURNS OF THE DAY MINE!  Love you always 💜";
+document.getElementById("wish").innerHTML =
+        "💜content💜";
+          document.getElementById("bgMusic").play();
+    createHearts();
+}
+
+function createHearts() {
+    for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💜";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = "18px";
+
+        document.body.appendChild(heart);
+
+        let move = setInterval(() => {
+            let top = parseFloat(heart.style.top);
+            heart.style.top = (top - 2) + "px";
+            if (top < -10) {
+                clearInterval(move);
+                heart.remove();
+            }
+        }, 30);
+    }
+}
+</script>
+
 </body>
 </html>
